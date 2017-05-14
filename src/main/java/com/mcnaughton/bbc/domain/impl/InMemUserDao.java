@@ -1,6 +1,6 @@
 package com.mcnaughton.bbc.domain.impl;
 
-import com.mcnaughton.bbc.Models.User;
+import com.mcnaughton.bbc.models.User;
 import com.mcnaughton.bbc.domain.UserDao;
 
 import java.util.Map;

@@ -1,6 +1,6 @@
 package com.mcnaughton.bbc.domain;
 
-import com.mcnaughton.bbc.Models.User;
+import com.mcnaughton.bbc.models.User;
 
 import java.util.UUID;
 

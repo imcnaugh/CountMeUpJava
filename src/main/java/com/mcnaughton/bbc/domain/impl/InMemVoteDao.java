@@ -1,6 +1,6 @@
 package com.mcnaughton.bbc.domain.impl;
 
-import com.mcnaughton.bbc.Models.Vote;
+import com.mcnaughton.bbc.models.Vote;
 import com.mcnaughton.bbc.domain.VoteDao;
 
 import java.util.ArrayList;

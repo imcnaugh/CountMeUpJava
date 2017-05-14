@@ -1,9 +1,9 @@
 package com.mcnaughton.bbc.domain.impl;
 
-import com.mcnaughton.bbc.Models.BaseModel;
-import com.mcnaughton.bbc.Models.Candidate;
-import com.mcnaughton.bbc.Models.User;
-import com.mcnaughton.bbc.Models.Vote;
+import com.mcnaughton.bbc.models.BaseModel;
+import com.mcnaughton.bbc.models.Candidate;
+import com.mcnaughton.bbc.models.User;
+import com.mcnaughton.bbc.models.Vote;
 
 import java.util.HashMap;
 import java.util.Map;

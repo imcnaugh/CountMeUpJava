@@ -1,4 +1,4 @@
-package com.mcnaughton.bbc.Models;
+package com.mcnaughton.bbc.models;
 
 import java.util.UUID;
 
