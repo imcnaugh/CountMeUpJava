@@ -11,5 +11,9 @@ public class User extends BaseModel {
         this.name = name;
     }
 
+    public String getName(){
+        return name;
+    }
+
 
 }

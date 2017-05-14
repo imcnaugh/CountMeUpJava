@@ -2,12 +2,14 @@ package com.mcnaughton.bbc.domain.impl;
 
 import com.mcnaughton.bbc.models.Vote;
 import com.mcnaughton.bbc.domain.VoteDao;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+@Repository
 public class InMemVoteDao implements VoteDao {
 
     private Map<UUID, Vote> dataStore = DataStorage.voteDataStore;
@@ -19,9 +21,7 @@ public class InMemVoteDao implements VoteDao {
 
     @Override
     public int getVoteCountForCandidate(UUID candidateId){
-        return (int) dataStore.values().stream().filter(v -> {
-            return v.getCandidateId() == candidateId;
-        }).count();
+        return (int) dataStore.values().stream().filter(v -> v.getCandidateId().equals(candidateId)).count();
     }
 
     @Override
@@ -34,8 +34,6 @@ public class InMemVoteDao implements VoteDao {
 
     @Override
     public int getVoteCountForUser(UUID userId){
-        return (int) dataStore.values().stream().filter(v -> {
-            return v.getCandidateId() == userId;
-        }).count();
+        return (int) dataStore.values().stream().filter(v -> v.getUserId().equals(userId)).count();
     }
 }

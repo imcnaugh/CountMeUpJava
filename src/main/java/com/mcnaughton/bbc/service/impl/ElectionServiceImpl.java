@@ -6,11 +6,14 @@ import com.mcnaughton.bbc.domain.VoteDao;
 import com.mcnaughton.bbc.models.Candidate;
 import com.mcnaughton.bbc.models.User;
 import com.mcnaughton.bbc.service.ElectionService;
+import com.mcnaughton.bbc.service.models.CandidateVotes;
 import com.mcnaughton.bbc.service.models.ElectionResults;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@Service
 public class ElectionServiceImpl implements ElectionService{
 
     @Autowired
@@ -41,7 +44,7 @@ public class ElectionServiceImpl implements ElectionService{
         }
 
         int userVoteCount = voteDao.getVoteCountForUser(userId);
-        if(userVoteCount > VOTE_THRESHOLD){
+        if(userVoteCount >= VOTE_THRESHOLD){
             //TODO throw better exceptions
             throw new Exception("exceeded votes for this user");
         }
@@ -55,10 +58,12 @@ public class ElectionServiceImpl implements ElectionService{
 
     @Override
     public ElectionResults getElectionResults() {
-        Map<Candidate, Integer> candidateVotesInElection = new HashMap<>();
+        List<CandidateVotes> candidateVotesInElection = new ArrayList<>();
         cachedVoteResults.forEach((id, count) -> {
-            candidateVotesInElection.put(candidateDao.getCandidate(id), count);
+            candidateVotesInElection.add(new CandidateVotes(candidateDao.getCandidate(id), count));
         });
-        return new ElectionResults(candidateVotesInElection, cachedVoteResults.size());
+        int totalVotes = cachedVoteResults.values().stream().mapToInt(i -> i.intValue()).sum();
+
+        return new ElectionResults(candidateVotesInElection, totalVotes);
     }
 }

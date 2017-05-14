@@ -2,10 +2,12 @@ package com.mcnaughton.bbc.domain.impl;
 
 import com.mcnaughton.bbc.models.User;
 import com.mcnaughton.bbc.domain.UserDao;
+import org.springframework.stereotype.Repository;
 
 import java.util.Map;
 import java.util.UUID;
 
+@Repository
 public class InMemUserDao implements UserDao{
 
     private Map<UUID, User> dataStore = DataStorage.userDataStore;
